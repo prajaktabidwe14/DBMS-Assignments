@@ -1,0 +1,84 @@
+mysql> create database cdac;
+Query OK, 1 row affected (0.63 sec)
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| cdac               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use cdac;
+Database changed
+mysql> create table SALESPEOPLE(Snum int(4),Sname varchar(10),City  varchar(10), Comm  float(3,2));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> create table CUSTOMERS (Cnum int(4),Cname varchar(10), City  varchar(10),Rating  int(4),Snum int(4));
+Query OK, 0 rows affected (0.38 sec)
+
+mysql> create table ORDERS(Onum int(4), Amt float(7,2),Odate date,Cnum int(4),Snum int(4));
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_cdac |
++----------------+
+| customers      |
+| orders         |
+| salespeople    |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into salespeople(SNUM,SNAME,CITY,COMM)values('1001','Peel','London','.12'),('1002','Serres','San Jose','.13'),('1004','Motika','London','.11'),('1007','Rifkin','Barcelona','.15'),('1003','Axelrod','New York ','.10');
+Query OK, 5 rows affected (0.16 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into customers(CNUM,CNAME,CITY,RATING,SNUM) values ('2001','Hoffman','London','100','1001'), ('2002','Giovanni','Rome','200','1003'),('2003','Liu','San Jose','200','1002'),('2004','Grass','Berlin','300','1002'), ('2005','Clemens','London','100','1001'),('2008','Cisneros','San Jose','300','1007');
+Query OK, 6 rows affected (0.11 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> insert into orders(ONUM,AMT,ODATE,CNUM,SNUM) values('3001','18.69','1990-10-03','2008','1007'),('3002','1900.10','1990-10-03','2007','1004'),('3003','767.19','1990-10-030','2001','1001'), ('3007','75.75','1990-10-04','2004','1002');
+Query OK, 4 rows affected (0.09 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
++------+---------+-----------+------+
+5 rows in set (0.03 sec)
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2005 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from orders;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3003 |  767.19 | 1990-10-30 | 2001 | 1001 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
++------+---------+------------+------+------+
+4 rows in set (0.00 sec)
+
+mysql>
