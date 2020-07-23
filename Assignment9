@@ -1,0 +1,17 @@
+1) Write a query that lists each order number followed by the name of the customer who made the order.
+
+Ans-> Select Onum, Cname from Orders o, Customers WHERE c.Cnum=o.Cnum ;
+
+2) Write a query that gives the names of both the salesperson and the customer for each order along with the order number.
+
+Ans-> Select Sname, Cname, Onum from Orders o, Customers c, Salespeople WHERE o.Snum=c.snum AND o.Snum=s.Snum;
+
+3) Write a query that produces all customers serviced by salespeople with a commission above 12%. 
+  Output the customer’s name, the salesperson’s name, and the salesperson’s rate of commission.
+
+Ans-> Select Sname, Snum, comm*100 "rate of comm." from Customers JOIN Salespeople USING (Snum) WHERE comm>.12;
+
+4) Write a query that calculates the amount of the salesperson’s commission on each order
+by a customer with a rating above 100.
+
+Ans-> Select amount, comm from Salespeople JOIN Customers USING(snum) JOIN Orders USING(Snum) WHERE rating>100;
