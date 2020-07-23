@@ -1,0 +1,18 @@
+1)	Write a query that counts all orders for October 3.
+ Ans -> Select Count(Onum) total_order from Orders WHERE Odate LIKE '03-OCT-%';
+ 
+2)	Write a query that counts the number of different non-NULL city values in the Customers table.
+ Ans-> Select Count(Cname) Emp_city from Customers WHERE Cname IS NOT NULL;
+
+3)	Write a query that selects each customer’s smallest order.
+ Ans-> Select min(amount) ) "smallest order", Cnum from Orders GROUP BY Cnum;
+
+4)	Write a query that selects the first customer, in alphabetical order, whose name begins with G.
+ Ans-> Select * from Customers WHERE Cname LIKE 'G%'ORDER BY Cname;
+
+5)	Write a query that selects the highest rating in each city. 
+ Ans-> Select max(rating) "highest rating" from Customers; 
+
+6)	Write a query that counts the number of salespeople registering orders for each day. (If a salesperson has more than one order on a given day,
+he or she should be counted only once.).
+ Ans-> Select Count(Odate)||' SALES PERSON REGISTREDDON' "TOTAL", Odate from orders GROUP BY Odate;
