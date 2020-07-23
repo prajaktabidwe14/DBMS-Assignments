@@ -1,0 +1,18 @@
+1) Write a query that selects all customers whose ratings are equal to or greater than ANY of Serres.
+
+Ans-> Select * from Customers WHERE rating >= ANY (Select rating from Customers WHERE Snum IN (Select Snum from Salesperson WHERE Sname='Serres'));
+
+
+2) Write a query using ANY or ALL that will find all salespeople who have no customers located in their city.
+
+Ams-> Select Snum from Salespeople WHERE (Snum, City) NOT IN (Select Snum, City from Customers);
+
+
+3) Write a query that selects all orders for amounts greater than any for the customers in London.
+
+Ans-> Select * from Orders WHERE amount > ANY (Select amount from Orders WHERE Cnum IN (Select Cnum from Customers WHERE City='London'));
+
+
+4) Write the above query using MIN or MAX.
+
+Ans-> Select * from Orders WHERE amount > (Select min(amount) from Customers NATURAL JOIN Orders WHERE City='London');
