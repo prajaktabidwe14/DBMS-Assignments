@@ -1,0 +1,21 @@
+
+1) Which of these views are updateable (will allow DML operations)?
+Ans->
+      1:  CREATE View Dailyorders as 
+          SELECT Distinct cnum, snum, onum, odate FROM Orders;
+
+      4:  CREATE View Nullcities as
+          SELECT snum, sname, city FROM Salespeople WHERE city is NULL
+          OR sname BETWEEN ‘A’ and ‘MZ’;
+
+
+2) Create a view of the Salespeople table called Commissions.
+   This view will include only the snum and comm fields. 
+   Through this view, someone could enter or change commissions, but only to values between .10 and .20.
+Ans->
+      CREATE View Commisions as
+      SELECT Snum, Comm FROM salespeople
+      WHERE Comm BETWEEN 0.10 AND 0.20
+      with check option;
+      
+      
